@@ -15,20 +15,14 @@ import modelo.Usuario;
 @WebServlet("/registro")
 public class RegistroServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String nombre = request.getParameter("nombre");
-        String apellido = request.getParameter("apellido");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        String fechaNacimiento = request.getParameter("fechaNacimiento");
-        String pais = request.getParameter("pais");
-
         Usuario usuario = new Usuario();
-        usuario.setNombre(nombre);
-        usuario.setApellido(apellido);
-        usuario.setEmail(email);
-        usuario.setPassword(password);
-        usuario.setFechaNacimiento(Date.valueOf(fechaNacimiento));
-        usuario.setPais(pais);
+        
+        usuario.setNombre(request.getParameter("nombre"));
+        usuario.setApellido(request.getParameter("apellido"));
+        usuario.setEmail(request.getParameter("email"));
+        usuario.setPassword(request.getParameter("password"));
+        usuario.setFechaNacimiento(Date.valueOf(request.getParameter("fechaNacimiento")));
+        usuario.setPais(request.getParameter("pais"));
 
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         try {

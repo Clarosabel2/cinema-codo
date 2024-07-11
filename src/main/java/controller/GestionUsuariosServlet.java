@@ -14,7 +14,7 @@ import java.util.List;
 // Esta anotación mapea el servlet a la URL "/GestionUsuariosServlet"
 @WebServlet("/GestionUsuariosServlet")
 public class GestionUsuariosServlet extends HttpServlet {
-    
+
     private UsuarioDAO usuarioDAO;
     private ObjectMapper objectMapper;
 
@@ -42,29 +42,31 @@ public class GestionUsuariosServlet extends HttpServlet {
             //convierte la lista de usuarios en JSON y la envía como respuesta HTTP
         }
     }
+
     @Override
     protected void doPut(HttpServletRequest request, HttpServletResponse response) throws IOException {
- 
-    Usuario usuario = objectMapper.readValue(request.getReader(), Usuario.class);
-    boolean exito = usuarioDAO.modificar(usuario);
-    
-    response.setContentType("application/json");
-    // Establece la codificación de caracteres de la respuesta como UTF-8
-    response.setCharacterEncoding("UTF-8");
-    // Escribe la respuesta JSON
-    response.getWriter().write("{\"exito\": " + exito + "}");
-}
+
+        Usuario usuario = objectMapper.readValue(request.getReader(), Usuario.class);
+        boolean exito = usuarioDAO.modificar(usuario);
+
+        response.setContentType("application/json");
+        // Establece la codificación de caracteres de la respuesta como UTF-8
+        response.setCharacterEncoding("UTF-8");
+        // Escribe la respuesta JSON
+        response.getWriter().write("{\"exito\": " + exito + "}");
+    }
 
     @Override
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    int id = Integer.parseInt(request.getParameter("id"));
-    
-    boolean exito = usuarioDAO.eliminar(id);
-    
-    response.setContentType("application/json");
-    response.setCharacterEncoding("UTF-8");
-    // Escribe la respuesta JSON
-    response.getWriter().write("{\"exito\": " + exito + "}");
+        int id = Integer.parseInt(request.getParameter("id"));
 
-}
+        boolean exito = usuarioDAO.eliminar(id);
+
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        // Escribe la respuesta JSON
+        response.getWriter().write("{\"exito\": " + exito + "}");
+
+    }
+    
 }
