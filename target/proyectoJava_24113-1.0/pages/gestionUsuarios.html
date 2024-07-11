@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gestion de Usuarios</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+<body>
+    <div class="container mt-5">
+        <button type="button" class="btn btn-primary" onclick="window.location.href='/com.ar.proyectoDePrueba/index.html'" class="form-control">Inicio</button>
+    </div>
+    <div class="container mt-5">
+        <h1 class="mb-4">Gestion de Usuarios</h1>
+        <table class="table table-striped" id="usuariosTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>País</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Los datos se cargarán aquí dinámicamente -->
+            </tbody>
+        </table>
+    </div>
+
+    <div class="modal fade" id="modificarModal" tabindex="-1" aria-labelledby="modificarModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-tittle" id="modificarModalLabel">Modificar Usuario
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="modificarForm">
+                        <input type="hidden" id="userId">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label"></label>
+                            <input type="text" class="form-control" id="nombre" required> 
+                        </div>
+                        <div class="mb-3">
+                            <label for="apellido" class="form-label"></label>
+                            <input type="text" class="form-control" id="apellido" required> 
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label"></label>
+                            <input type="email" class="form-control" id="email" required> 
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label"></label>
+                            <input type="text" class="form-control" id="password" required> 
+                        </div>
+                        <div class="mb-3">
+                            <label for="fechadenacimiento" class="form-label"></label>
+                            <input type="date" class="form-control" id="fechaNacimiento" required> 
+                        </div>
+                        <div class="mb-3">
+                            <label for="pais" class="form-label"></label>
+                            <input type="text" class="form-control" id="pais" required> 
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" onclick="guardarModificacion()">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/gestionUsuarios.js"></script>
+</body>
+
+</html>

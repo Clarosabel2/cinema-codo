@@ -1,0 +1,343 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+* {
+  font-family: "Poppins", sans-serif;
+  user-select: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+body::-webkit-scrollbar {
+  width: 2px;
+  background-color: rgba(214, 214, 214, 0.493);
+}
+body::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    #60686c 0%,
+    #60686c 15%,
+    #161718 66.67%,
+    #000000 100%
+  );
+  border-radius: 10px;
+}
+
+@media only screen and (min-width: 1360px) {
+  header {
+    position: fixed;
+    width: 100%;
+    height: 6%;
+    display: flex;
+    backdrop-filter: blur(25px);
+    background-color: rgb(34, 38, 39, 0.5);
+    color: white;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 100;
+  }
+
+  header .container-logo {
+    width: 23vh;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: black;
+    border-radius: 0px 50px 50px 0px;
+  }
+  header .container-logo h1 {
+    padding-right: 1rem;
+    font-size: 3vh;
+  }
+  header .container-logo img {
+    width: 10vh;
+    height: 10vh;
+  }
+  header .container-search {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  header .container-search .search {
+    width: 80%;
+    height: 70%;
+    font-size: 1.2rem;
+    border-radius: 50px 50px 50px 50px;
+    padding-left: 1rem;
+    outline: none;
+    border: none;
+    background-color: #3b3b3b;
+    color: white;
+  }
+  header .container-search .search-icon {
+    width: 30px;
+    translate: calc(-32px);
+    cursor: pointer;
+  }
+  header .container-search .search-icon:active {
+    transform: scale(1.1);
+  }
+  header .container-user {
+    width: 23vh;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    color: black;
+    border-radius: 50px 0px 0px 50px;
+    align-items: center;
+  }
+  header .container-user img {
+    width: 5vh;
+    height: 5vh;
+  }
+  header .container-user a {
+    padding-left: 30px;
+    font-size: 2vh;
+  }
+
+  main {
+    padding-top: 5vh;
+    z-index: 10;
+    background: linear-gradient(
+      #60686c 0%,
+      #60686c 15%,
+      #161718 66.67%,
+      #000000 100%
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  main.pointer-e:not(.container-info) {
+    pointer-events: none;
+  }
+  main .container-filter {
+    margin-top: 1rem;
+    background-color: rgb(34, 38, 39, 0.8);
+    width: auto;
+    height: 5vh;
+    display: flex;
+    border-radius: 10px;
+    gap: 2vh;
+    display: flex;
+    justify-content: center;
+
+    box-shadow: 0px 30px 100px #fff;
+    z-index: 90;
+  }
+  main .container-sucu {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    width: auto;
+    padding-right: 1rem;
+  }
+  main .container-sucu label {
+    padding-left: 10%;
+    color: white;
+  }
+  main .container-sucu #sucu-droplist {
+    border-radius: 10px;
+    width: 14vh;
+    padding-left: auto;
+    height: 80%;
+    cursor: pointer;
+    background-color: #3b3b3b;
+    color: white;
+    text-align: center;
+  }
+
+  main .grid-container {
+    width: 90%;
+    height: 100%;
+    display: grid;
+    padding-top: 20px;
+    color: white;
+    /* Crear una cuadrícula de 3 columnas */
+    grid-auto-rows: 25rem;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+
+    /* Espacio entre las películas */
+    gap: 5px;
+  }
+  main .grid-container .movie-card {
+    border: 1px solid #2a2d2f;
+    border-radius: 20px;
+    padding: 10px;
+    text-align: center;
+    /* Centrar el contenido */
+    transition: transform 0.8s;
+    cursor: pointer;
+    z-index: 70;
+  }
+  main .grid-container .movie-card:hover {
+    transform: scale(1.09);
+    background-color: #661d1d;
+    z-index: 80;
+  }
+  main .grid-container .movie-card:active {
+    background-color: #1f0c0c;
+  }
+  main .grid-container .movie-card .movie-image {
+    max-width: 100%;
+    /* Ajustar la imagen al ancho del contenedor */
+    height: 80%;
+    /* Mantener la proporción de la imagen */
+    border-radius: 20px;
+  }
+
+  main .grid-container .movie-card .show-times {
+    display: none;
+    /* Ocultar los horarios por defecto */
+  }
+  main .grid-container .movie-card .title-movie {
+    font-size: 1.2rem;
+  }
+  main .container-info {
+    visibility: hidden;
+    width: 100%;
+    height: 95%;
+    background-color: rgb(34, 38, 39, 0.5);
+    color: white;
+    position: fixed;
+    top: 5%;
+    overflow: hidden;
+    display: flex;
+    backdrop-filter: blur(25px);
+    z-index: 95;
+  }
+  @keyframes scale-up-center {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes scale-down-center {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  main .container-info.show {
+    animation: scale-up-center 0.4s;
+    pointer-events: auto;
+    transition: opacity 0.5s ease, visibility 0s linear;
+    opacity: 1;
+  }
+  main .container-info.close {
+    animation: scale-down-center 0.4s;
+    transition: opacity 0.5s ease, visibility 0s linear;
+    opacity: 1;
+  }
+  main .container-info .movie-select {
+    max-height: 100%;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  main .container-info .movie-select img {
+    width: 70%;
+    height: 80%;
+    box-shadow: 5px 10px 30px #000000;
+  }
+  main .container-info .info-movie {
+    margin-left: 10%;
+    width: 50%;
+    height: 100%;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+  }
+  main .container-info .info-movie .info-timetables {
+    width: 100%;
+    height: 10%;
+    font-size: 1.5rem;
+    padding-top: 3rem;
+  }
+  main .container-info .info-movie .info-timetables #radio-btn {
+    cursor: pointer;
+    background-color: gray;
+  }
+  main .container-info .info-movie .description-movie {
+    padding-bottom: 1rem;
+  }
+  main .container-info .info-movie p {
+    margin: 0;
+  }
+  main .container-info .info-movie .container-buttons .btn-buy {
+    display: flex;
+    width: 150px;
+    height: 70px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    align-items: center;
+    background-color: rgb(212, 212, 212);
+    color: black;
+    border-radius: 20px;
+    font-weight: bold;
+  }
+  main .container-info .info-movie .container-buttons .btn-buy:hover {
+    box-shadow: 1px 1px 20px #f8f8f8;
+    background-color: rgb(212, 212, 212);
+  }
+  main .container-info .info-movie .container-buttons .btn-buy:active {
+    box-shadow: none;
+  }
+  main .container-info .btn-close {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    filter: drop-shadow(2px 2px 20px);
+    margin-top: 1rem;
+    margin-right: 1rem;
+  }
+
+  footer {
+    width: 100%;
+    height: 200px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .txt-footer {
+    color: white;
+  }
+}
+@media only screen and (max-width: 1360px) and (min-width: 767px) and (orientation: portrait) {
+}
+@media only screen and (max-width: 400px) and (orientation: portrait) {
+  main .container-filter {
+    display: none;
+  }
+  main .grid-container {
+    width: 90%;
+    height: 100%;
+    display: grid;
+    padding-top: 20px;
+    color: white;
+    /* Crear una cuadrícula de 3 columnas */
+    grid-auto-rows: 15rem;
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  }
+  .container-info {
+    flex-direction: row;
+  }
+}
